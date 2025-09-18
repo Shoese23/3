@@ -3,20 +3,23 @@ fun main() {
     val stroki = readln().toInt()
     print("Введите кол-во столбцов:")
     val stoldci = readln().toInt()
-    var r_stroka = -1
-    var r_stolbec = 0
-    val arrChisla: Array<Array<Int>> = Array(stroki){
-        r_stroka++
-        Array (stoldci){
-            print("Введите элемент [$r_stroka][$r_stolbec]:")
-            readln().toInt()
-            r_stolbec++
+
+    val arrChisla: Array<Array<Int?>> = Array(stroki) {arrayOfNulls(stoldci) }
+    var allNum = ""
+
+    for (i in 0 until stroki) {
+        for (j in 0 until stoldci){
+            print("Введите элемент [$i][$j]:")
+            val timeVal = readln().toInt()
+            allNum += timeVal.toString()
+            arrChisla[i][j] = timeVal
         }
     }
-    for (i in 0 .. stroki){
-        for (j in 0 .. stoldci){
-            print(arrChisla[i][j].toString() + "/t")
+    for (i in 0 until stroki) {
+        for (j in 0 until stoldci) {
+        print(arrChisla[i][j].toString() + "\t")
         }
-    println()
+        println()
     }
+    println("Колличество уникальных символов: ${allNum.toSet().size}")
 }
